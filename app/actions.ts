@@ -1,5 +1,7 @@
 "use server"
 
+import { scrapeWeatherWithCheerio } from "./actions-with-cheerio"
+
 interface WttrResponse {
   current_condition: Array<{
     temp_C: string
@@ -13,6 +15,7 @@ interface WttrResponse {
     areaName: Array<{ value: string }>
     country: Array<{ value: string }>
     region: Array<{ value: string }>
+    datetime:string
   }>
   weather: Array<{
     date: string
@@ -40,6 +43,8 @@ export async function scrapeWeatherData(location: string) {
 
     const data = (await response.json()) as WttrResponse
 
+    
+
     // Check if we have the data we need
     if (!data.current_condition?.[0] || !data.nearest_area?.[0]) {
       throw new Error(`No weather data available for "${location}"`)
@@ -53,6 +58,9 @@ export async function scrapeWeatherData(location: string) {
     const region = area.region[0].value
     const country = area.country[0].value
     const locationString = region ? `${cityName}, ${region}, ${country}` : `${cityName}, ${country}`
+
+    const responsegetTime =await scrapeWeatherWithCheerio(location);
+    console.log('get time here',responsegetTime)
 
     // Get the local date and time
     const localDate = new Date()
@@ -70,7 +78,7 @@ export async function scrapeWeatherData(location: string) {
       location: locationString,
       temperature: `${current.temp_C}°C (${current.temp_F}°F)`,
       condition: current.weatherDesc[0].value,
-      dateTime: `${formattedDateTime} (Observation time: ${current.observation_time})`,
+      dateTime: `${responsegetTime.date} ${responsegetTime.time}`,//${formattedDateTime} (Observation 
       humidity: `${current.humidity}%`,
       windSpeed: `${current.windspeedKmph} km/h`,
     }

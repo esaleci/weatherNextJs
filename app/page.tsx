@@ -235,7 +235,7 @@ export default function WeatherScraperPage() {
                 <Button
                   variant={isLocationInFavorites() ? "outline" : "default"}
                   onClick={addToFavorites}
-                  disabled={isLocationInFavorites()}
+                  disabled={isLocationInFavorites()||false}
                   className="w-full"
                 >
                   <Heart className={`mr-2 h-4 w-4 ${isLocationInFavorites() ? "fill-primary" : ""}`} />
