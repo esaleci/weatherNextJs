@@ -75,6 +75,7 @@ export async function scrapeWeatherData(location: string) {
     const formattedDateTime = localDate.toLocaleDateString("en-US", options)
 
     return {
+      locationquery:encodeURIComponent(location),
       location: locationString,
       temperature: `${current.temp_C}°C (${current.temp_F}°F)`,
       condition: current.weatherDesc[0].value,

@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { WeatherAnimation } from "@/components/weather-animation"
 
 interface WeatherData {
+  locationquery:string,
   location: string
   temperature: string
   condition: string
@@ -23,6 +24,7 @@ interface WeatherData {
 }
 
 interface FavoriteLocation {
+  location: string
   id: string
   name: string
 }
@@ -80,7 +82,8 @@ export default function WeatherScraperPage() {
 
     const newFavorite = {
       id: Date.now().toString(),
-      name: weatherData.location,
+      name: weatherData.locationquery,
+      location:weatherData.location,
     }
 
     // Check if already in favorites
@@ -142,7 +145,7 @@ export default function WeatherScraperPage() {
   }
 
   const isLocationInFavorites = () => {
-    return weatherData && favorites.some((fav) => fav.name === weatherData.location)
+    return weatherData && favorites.some((fav) => fav.location === weatherData.location)
   }
 
   return (
@@ -261,7 +264,7 @@ export default function WeatherScraperPage() {
                 <Card key={favorite.id} className="overflow-hidden">
                   <CardHeader className="pb-2">
                     <div className="flex justify-between items-start">
-                      <CardTitle className="text-lg h-[80px] text-ellipsis">{favorite.name}</CardTitle>
+                      <CardTitle className="text-lg h-[80px] text-ellipsis">{favorite.location}</CardTitle>
                       <Button
                         variant="ghost"
                         size="icon"
