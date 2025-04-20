@@ -59,6 +59,431 @@
 }
 
 @layer utilities {
+  /* Base weather background styles */
+  .weather-bg {
+    @apply transition-all duration-1000;
+  }
+
+  /* Default background */
+  .weather-default {
+    @apply bg-gradient-to-b from-blue-900 to-gray-900;
+  }
+
+  /* Sunny background */
+  .weather-sunny {
+    @apply bg-gradient-to-b from-blue-100 to-blue-800;
+  }
+
+  /* Cloudy background */
+  .weather-cloudy {
+    @apply bg-gradient-to-b from-gray-600 to-gray-900;
+  }
+
+  /* Rainy background */
+  .weather-rain {
+    @apply bg-gradient-to-b from-gray-700 to-gray-900;
+  }
+
+  /* Snowy background */
+  .weather-snow {
+    @apply bg-gradient-to-b from-gray-500 to-blue-900;
+  }
+
+  /* Foggy background */
+  .weather-fog {
+    @apply bg-gradient-to-b from-gray-500 to-gray-800;
+  }
+
+  /* Thunder background */
+  .weather-thunder {
+    @apply bg-gradient-to-b from-gray-800 to-gray-900;
+  }
+
+  /* Rain effect */
+  .rain-container {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .raindrop {
+    @apply absolute w-[1px] bg-blue-300/60;
+    height: 20px;
+    animation: raindrop linear infinite;
+  }
+
+  .raindrop:nth-child(1n) {
+    height: 15px;
+    left:10%;
+    animation-duration: 0.9s;
+  }
+  .raindrop:nth-child(9n) {
+    height: 20px;
+    left:15%;
+    /* transform: rotate(50deg); */
+    animation-duration: 1.3s;
+  }
+
+  .raindrop:nth-child(2n) {
+    height: 25px;
+    left:25%;
+    animation-duration: 1.1s;
+  }
+  .raindrop:nth-child(8n) {
+    height: 10px;
+    left:35%;
+    /* transform: rotate(50deg); */
+    animation-duration: 0.8s;
+  }
+
+  .raindrop:nth-child(3n) {
+    height: 18px;
+    left:50%;
+    animation-duration: 1.3s;
+  }
+  
+  .raindrop:nth-child(7n) {
+    height: 21px;
+    left:65%;
+    /* transform: rotate(50deg); */
+    animation-duration: 0.5s;
+  }
+
+  .raindrop:nth-child(4n) {
+    height: 20px;
+    left:75%;
+    animation-duration: 1s;
+  }
+
+  .raindrop:nth-child(5n) {
+    height: 12px;
+    left:95%;
+    /* transform: rotate(50deg); */
+    animation-duration: 1.5s;
+  }
+
+  .raindrop:nth-child(6n) {
+    height: 18px;
+    left:85%;
+    /* transform: rotate(50deg); */
+    animation-duration: 0.8s;
+  }
+
+
+  @keyframes raindrop {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0.3;
+    }
+  }
+
+  /* Thunder drop variation */
+  .thunder-drop {
+    animation-duration: 1.2s;
+  }
+
+  /* Lightning flash */
+  .lightning-flash {
+    @apply absolute inset-0 bg-white/5;
+    animation: lightning 5s ease-out infinite;
+  }
+
+  @keyframes lightning {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    0.5%,
+    0.7% {
+      opacity: 1;
+    }
+    1%,
+    9.9% {
+      opacity: 0;
+    }
+    10%,
+    10.2% {
+      opacity: 0.8;
+    }
+    10.4%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Snow effect */
+  .snow-container {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .snowflake {
+    @apply absolute rounded-full bg-white/80;
+    width: 5px;
+    height: 5px;
+    animation: snowfall linear infinite;
+    filter: blur(1px);
+  }
+
+  .snowflake:nth-child(1n) {
+    width: 4px;
+    height: 4px;
+    left:10%;
+    animation-duration: 10s;
+  }
+
+  .snowflake:nth-child(2n) {
+    width: 6px;
+    height: 6px;
+    left:15%;
+    animation-duration: 12s;
+  }
+
+  .snowflake:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+    left:25%;
+    animation-duration: 8s;
+  }
+
+  .snowflake:nth-child(4n) {
+    width: 5px;
+    height: 5px;
+    left:35%;
+    animation-duration: 2s;
+  }
+
+  .snowflake:nth-child(5n) {
+    width: 3px;
+    height: 3px;
+    left:40%;
+    animation-duration: 8s;
+  }
+  .snowflake:nth-child(6n) {
+    width: 4px;
+    height: 4px;
+    left:55%;
+    animation-duration: 5s;
+  }
+  .snowflake:nth-child(7n) {
+    width: 3px;
+    height: 3px;
+    left:60%;
+    animation-duration: 1s;
+  }
+  .snowflake:nth-child(8n) {
+    width: 8px;
+    height: 8px;
+    left:70%;
+   
+    animation-duration: 3s;
+  }
+  .snowflake:nth-child(9n) {
+    width: 3px;
+    height: 3px;
+    left:75%;
+    animation-duration: 2s;
+  }
+  .snowflake:nth-child(10n) {
+    width: 4px;
+    height: 4px;
+    left:85%;
+    animation-duration: 2s;
+  }
+  .snowflake:nth-child(11n) {
+    width: 5px;
+    height: 5px;
+    left:95%;
+    animation-duration: 8s;
+  }
+
+
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-100px) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh) translateX(100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Sunny effect */
+  .sunny-container {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .sun-glow {
+    @apply absolute rounded-full bg-yellow-300/30 blur-3xl;
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    right: 10%;
+    animation: pulse 5s ease-in-out infinite alternate;
+  }
+
+  .sun-rays {
+    @apply absolute rounded-full bg-yellow-200/10;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    right: 10%;
+    animation: rays 10s linear infinite;
+  }
+
+  .light-particle {
+    @apply absolute rounded-full bg-yellow-100/20;
+    width: 10px;
+    height: 10px;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes rays {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-50px) translateX(50px);
+    }
+    50% {
+      transform: translateY(0) translateX(100px);
+    }
+    75% {
+      transform: translateY(50px) translateX(50px);
+    }
+  }
+
+  /* Cloudy effect */
+  .cloudy-container {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .cloud {
+    @apply absolute bg-white/10 rounded-full blur-md;
+    animation: cloud-float 20s linear infinite;
+  }
+
+  .cloud:nth-child(1) {
+    width: 200px;
+    height: 80px;
+    top: 10%;
+    animation-duration: 30s;
+  }
+
+  .cloud:nth-child(2) {
+    width: 150px;
+    height: 60px;
+    top: 20%;
+    animation-duration: 25s;
+    animation-delay: 2s;
+  }
+
+  .cloud:nth-child(3) {
+    width: 180px;
+    height: 70px;
+    top: 30%;
+    animation-duration: 35s;
+    animation-delay: 5s;
+  }
+
+  .cloud:nth-child(4) {
+    width: 120px;
+    height: 50px;
+    top: 15%;
+    animation-duration: 28s;
+    animation-delay: 8s;
+  }
+
+  .cloud:nth-child(5) {
+    width: 160px;
+    height: 65px;
+    top: 25%;
+    animation-duration: 32s;
+    animation-delay: 12s;
+  }
+
+  @keyframes cloud-float {
+    0% {
+      left: -300px;
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      left: 100%;
+      opacity: 0;
+    }
+  }
+
+  /* Fog effect */
+  .fog-container {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .fog-layer {
+    @apply absolute w-full h-16 bg-white/10 blur-md;
+    animation: fog-move 15s ease-in-out infinite alternate;
+  }
+
+  .fog-layer:nth-child(odd) {
+    animation-duration: 18s;
+    animation-direction: alternate-reverse;
+  }
+
+  .fog-layer:nth-child(3n) {
+    animation-duration: 20s;
+  }
+
+  @keyframes fog-move {
+    0% {
+      transform: translateX(-5%);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(5%);
+      opacity: 0.5;
+    }
+  }
+
+  /* Original animations */
   .animate-weather-float {
     animation: weather-float 3s ease-in-out infinite;
   }
@@ -113,28 +538,22 @@
 
   @keyframes snow {
     0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 0.8;
     }
     100% {
-      transform: translateY(40px) rotate(360deg);
-      opacity: 0;
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0.2;
     }
   }
 
   @keyframes fog {
     0% {
-      transform: translateX(-5%);
+      transform: translateX(-5%) translateY(0);
       opacity: 0.3;
     }
     100% {
-      transform: translateX(5%);
+      transform: translateX(5%) translateY(0);
       opacity: 0.5;
     }
   }
@@ -167,4 +586,3 @@
     }
   }
 }
-
