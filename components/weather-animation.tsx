@@ -153,4 +153,3 @@ export function WeatherAnimation({ condition, className = "" }: WeatherAnimation
     </div>
   )
 }
-
