@@ -56,4 +56,3 @@ console.log({
 //   humidity: '65%',
 //   wind: '8 mph'
 // }
-
